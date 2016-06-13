@@ -15,11 +15,14 @@ class ViewController: UIViewController, WeatherServiceDelegate {
     
     
     
+    @IBOutlet weak var cloudslabel: UILabel!
     @IBOutlet weak var templabel: UILabel!
     @IBOutlet weak var deslabel: UILabel!
     @IBOutlet weak var citylable: UILabel!
     
+    @IBOutlet weak var cityButton: UIButton!
     
+    @IBOutlet weak var iconImage: UIImageView!
     
     @IBAction func tapplable(sender: UIButton) {
         print("tapped")
@@ -40,7 +43,7 @@ class ViewController: UIViewController, WeatherServiceDelegate {
                                 print("done")
         let textfield = alert.textFields?[0]
                                 print(textfield?.text!)
-        self.citylable.text = textfield?.text!
+        //self.citylable.text = textfield?.text!
         
         let cityname = textfield?.text!
 
@@ -61,8 +64,29 @@ class ViewController: UIViewController, WeatherServiceDelegate {
     
     
     func setweather(weather:Weather) {
-        print("what the fuck?")
-        print("\(weather.Cityname) \(weather.temp)  \(weather.Description) ")
+        
+        templabel.text = "\(weather.temp)"
+        deslabel.text = weather.Description
+        //citylable.text = weather.Cityname
+        cityButton.setTitle(weather.Cityname, forState: UIControlState.Normal)
+        iconImage.image = UIImage(named: weather.icon)
+        cloudslabel.text = "\(weather.clouds)%"
+        
+        
+        //print("what the fuck?")
+        //print("\(weather.Cityname) \(weather.temp)  \(weather.Description) ")
+    }
+    
+    
+    
+    func weatherErrorWithMessage(message: String){
+        
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "ok", style: .Default, handler: nil)
+        
+        alert.addAction(ok)
+        self.presentViewController(alert, animated: true, completion: nil)
+         
     }
     
     

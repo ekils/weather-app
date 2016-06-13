@@ -43,5 +43,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>nslocationwheninuseusage</key>
+	<string>may i use?</string>
+	<key>nslocationalwaysusedescription</key>
+	<string>may i use?</string>
 </dict>
 </plist>
